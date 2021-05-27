@@ -14,7 +14,7 @@ Git本身完全可以做到版本控制，但其所有内容以及版本记录�
 
 **集中式版本控制系统**，版本库是集中存放在中央服务器的，而干活的时候，用的都是自己的电脑，所以要先从中央服务器取得最新的版本，然后开始干活，干完活了，再把自己的活推送给中央服务器。中央服务器就好比是一个图书馆，你要改一本书，必须先从图书馆借出来，然后回到家自己改，改完了，再放回图书馆。
 
-![img](.\README.assets\0.png)
+![img](README.assets\0.png)
 
 > 集中式版本控制系统最大的毛病就是必须联网才能工作，如果在局域网内还好，带宽够大，速度够快，可如果在互联网上，遇到网速慢的话，可能提交一个10M的文件就需要5分钟，这还不得把人给憋死啊。
 
@@ -155,11 +155,11 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 2. 双击下载好的git安装包，弹出如图所示界面
 
-   ![img](README.assets/2018061111281656)
+   ![img](README.assets/2018061111281656.png)
 
 3. 点击Next> 选择安装路径，如下图
 
-   ![img](README.assets/20180611112837136)
+   ![img](README.assets/20180611112837136.png)
 
    > 路径上面不要有中文！！！
    >
@@ -171,7 +171,7 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 4. 选择好安装路径后，点击Next进入下一步，弹出安装配置窗口，如下
 
-   ![img](README.assets/20180611113643218)
+   ![img](README.assets/20180611113643218.png)
 
    > Additional icons 附加图标
    > 	On the Desktop 在桌面上
@@ -186,11 +186,11 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 5. 上述配置之后，点击Next进入下一步，弹出出 选择开始菜单文件夹 的窗口，如下图
 
-   ![img](README.assets/20180611113809662)
+   ![img](README.assets/20180611113809662.png)
 
 6. 点击 Next 进入下一步，进入 选择Git使用的默认编辑器 窗口
 
-   ![img](README.assets/20180611114642984)
+   ![img](README.assets/20180611114642984.png)
 
    > Use the Nano editor by default  默认使用 Nano 编辑器
    > Use Vim (The ubiquitous text editor) as Git's default editor  使用 Vim 作为 Git 的默认编辑器
@@ -200,7 +200,7 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 7. 点击 Next 进入下一步，进入 调整Path环境变量窗口 
 
-   ![img](README.assets/20180611133722654)
+   ![img](README.assets/20180611133722654.png)
 
    > Use Git from Git Bash only
    > This is the safest choice as your PATH will not be modified at all.You will only be able to use the Git command line tools form Git Bash.
@@ -220,7 +220,7 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 8. 点击 Next 进入下一步，
 
-   ![img](README.assets/20180611134343431)
+   ![img](README.assets/20180611134343431.png)
 
    > Use the OpenSSL library
    > 使用 OpenSSL 库
@@ -234,7 +234,7 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 9. 点击 Next 配置行结束符 配置窗口
 
-   ![img](README.assets/20180611134856670)
+   ![img](README.assets/20180611134856670.png)
 
    > Checkout Windows-style,commit Unix-style line endings
    > Git will convert LF to CRLF when checking out text files.When committing text files,CRLF will be converted to LF .For cross-pltform projects,this is the recommended setting on Windows ("core.autocrlf" is set to "true")
@@ -250,7 +250,7 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 10. 点击 Next 进入下一步，配置终端模拟器，
 
-    ![img](README.assets/20180611135510347)
+    ![img](README.assets/20180611135510347.png)
 
     > Use MinTTY (the default terminal of MSYS2)
     > Git Bash will use MinTTY as terminal emulator,which sports a resizable window,non-rectangular selections and a Unicode font. Windows console programs (such as interactive Python) must be launched via 'winpty' to work in MinTTY.
@@ -262,7 +262,7 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 11. 点击 Next 进入下一步，配置额外选项
 
-    ![img](README.assets/20180611140236773)
+    ![img](README.assets/20180611140236773.png)
 
     > Enable file system caching
     > 启用文件系统缓存
@@ -281,11 +281,11 @@ GitLab是用来进行项目管理的软件，而Github同样可以实现版本�
 
 12. 点击 Install 开始安装
 
-    ![img](README.assets/20180611140704212)
+    ![img](README.assets/20180611140704212.png)
 
 13. 安装完成
 
-    ![img](README.assets/20180611140818492)
+    ![img](README.assets/20180611140818492.png)
 
 14. 找空白文件夹，右键出现如下图所示菜单，则安装成功
 

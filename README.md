@@ -874,9 +874,47 @@ GitLab添加账号有两种方式，管理员添加与注册
 
    ![image-20210528105050877](README.assets/image-20210528105050877.png)
 
-   
+## 四、git相关命令
 
-   
+### 1. git init
+
+​	git init 命令用于在目录中创建新的Git仓库
+
+### 2. git clone
+
+​	git clone 用于将一个远程的Git仓库拷贝到本地
+
+​	命令格式如下
+
+``` shell
+git clone [url]  # url为远程git仓库地址
+```
+
+### 3. git add
+
+​	git add 命令用于将修改的文件添加到暂存区
+
+​	命令格式如下
+
+``` shell
+git add [file1] [file2] ... 
+```
+
+ 	可以加多个参数，每个参数都是一个文件或者文件夹，当参数为文件夹的时候，会添加文件夹下面的子目录及文件
+
+​	添加当前目录下所有文件，可以使用
+
+``` shell
+git add .
+```
+
+### 4. git status
+
+​	git status 命令可以查看在上次提交之后，是否对文件进行过修改
+
+
+
+
 
 
 

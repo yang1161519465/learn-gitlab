@@ -3,8 +3,8 @@
  * @version:
  * @Author: 雒小霞
  * @Date: 2021-05-28 08:42:02
- * @LastEditors: 雒小霞
- * @LastEditTime: 2021-05-28 09:35:01
+ * @LastEditors: 杨旭晨
+ * @LastEditTime: 2021-05-28 10:26:13
 -->
 <template>
   <div class="about">
@@ -22,6 +22,10 @@ export default {
       // 不知名函数
       console.log("不知道该写点啥");
     },
+    aaa() {
+      // 又一个函数
+      console.log("一个函数")
+    }
   },
 };
 </script>

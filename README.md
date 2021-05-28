@@ -846,4 +846,37 @@ GitLab添加账号有两种方式，管理员添加与注册
    git push origin master:test-branch  # 将本地的master分支推送到远端的test-branch分支中
    ```
 
+
+
+### 14. 合并分支
+
+1. 创建合并请求
+
+   在项目首页，点击分支，切换到对应分支中
+
+   ![image-20210528104711835](README.assets/image-20210528104711835.png)
+
+   点击创建合并请求
+
+   ![image-20210528104744550](README.assets/image-20210528104744550.png)
+
+   填写合并请求相关信息
+
+   ![image-20210528104802171](README.assets/image-20210528104802171.png)
+
+2. master处理合并请求
+
+   master进入项目首页，点击Merge Requests，进入合并请求管理界面，点击对应的请求
+
+   ![image-20210528104924124](README.assets/image-20210528104924124.png)
+
+   点击下方对应按钮，可以合并，合并并关闭请求，废弃请求
+
+   ![image-20210528105050877](README.assets/image-20210528105050877.png)
+
    
+
+   
+
+
+

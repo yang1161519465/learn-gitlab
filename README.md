@@ -912,9 +912,152 @@ git add .
 
 ​	git status 命令可以查看在上次提交之后，是否对文件进行过修改
 
+![image-20210528113647939](README.assets/image-20210528113647939.png)
 
+​	加后缀-s可以显示简短的显示
 
+![image-20210528113703754](README.assets/image-20210528113703754.png)
 
+### 5. git diff
 
+​	git diff 命令可以比较文件的不同，比较的是暂存区文件与工作区文件
 
+``` shell
+git diff --staged [file] # 查看暂存区与上一次提交的差异
+git diff --cached [file] # 查看暂存区与上一次提交的差异
+```
 
+### 6. git commit
+
+​	git ccommit 命令用于将暂存区的文件添加到本地仓库中
+
+``` shell
+git commit -m "修改信息" # 将暂存区所有文件都提交到本地仓库
+git commit [file1] [file2] ... -m "修改信息" # 将制定文件提交到本地仓库
+git commit -a # 将工作区所有修改提交到本地仓库
+```
+
+### 7. git reset
+
+​	git reset 命令用于回退版本，可以指定退回某一个提交的版本
+
+``` shell
+git reset HEAD^ # 撤销最近的一次提交，工作区内容保持不变
+git reset --head HEAD^ # 撤销最近一次的提交，工作区内容变为上一次提交内容
+git reset --soft HEAD [版本号] # 回退到制定版本，工作区内容保持不变
+```
+
++ HEAD：代表当前版本
+
++ HEAD^：代表上一版本
+
++ HEAD^^：代表上上版本
+
++ HEAD^^^：代表上上上版本
+
+  ... 以此类推
+
+  同样，也可以使用数字来代替
+
++ HEAD~0：代表当前版本
+
++ HEAD~1：代表上一版本
+
++ HEAD~2：代表上上版本
+
++ HEAD~3：代表上上上版本
+
+> 使用git reset命令会将提交撤销，不可恢复
+
+### 8. git rm
+
+​	git rm 命令用于删除文件
+
+> 如果只是简单地从工作目录中手工删除文件，运行 **git status** 时就会在 **Changes not staged for commit** 的提示。
+
+``` shell
+git rm <file> # 将文件从暂存区和工作区中删除   如果修改过的话，就需要加上-f，强制删除
+git rm --cached <file> # 将文件从暂存区中移除
+```
+
+### 9. git log
+
+​	git log 命令用于查看历史提交记录
+
+``` shell
+git log  # 查看历史提交记录
+git blame <file> # 以列表形式查看制定文件的历史修改记录
+```
+
+git log 相关参数
+
++ --oneline：使用简洁方式来显示日志，一行
+
++ --graph：开启拓扑图选项，更方便的查看项目中分支情况
+
++ --reverse：时间正序显示
+
++ --author=<用户名>：显示某一个制定用户的提交
+
++ --before= {<时间>} --before={<时间>}：查看某一个时间段内的提交
+
++ --no-merges：隐藏合并提交
+
+  ![image-20210528160027407](README.assets/image-20210528160027407.png)
+
+### 10  git remote
+
+​	git remote 命令用于远程仓库操作
+
+``` shell
+git remote -v # 查看远程仓库信息
+git remote show [remote] # 查看某一个远程仓库的详细信息
+git remote add [shortname] [url] # 增加一个远程仓库，shortname为本地的版本库
+git remote rm [name] # 删除远程仓库
+git remote rename [old_name] [new_name] # 修改远程仓库名
+```
+
+### 11. git fetch
+
+​	git fetch 命令用于从远程仓库获取代码
+
+> 该命令只获取远程分支信息，并不合并
+
+``` shell
+git fetch [alias] # 获取远程仓库信息，alias为远程仓库名称
+git merge [alias]/[branch] # 将从远程仓库获取到的信息，合并到本地仓库的任意分支
+```
+
+### 12. git pull
+
+​	git pull 命令用于从远程仓库获取代码并合并到本地仓库中
+
+> git pull 骑士就是 git fetch 和 git merge 的简写
+
+``` shell
+git pull <远程主机名> <元亨分支名>:<本地分支名> # 将远程仓库的某一个分支下载并合并到本地某一个分支
+git pull <远程主机名> <分支名>  # 当远程分支和本地分支名称一致的时候，可以省略一个
+git pull  # 默认拉起origin主机的master分支
+```
+
+### 13. git push
+
+​	git push 命令用于从本地版本库的某一个分支上传到远程并合并
+
+``` shell
+git push <远程主机名> <本地分支名>:<远程分支名>  # 将本地的某一个分支推送到远程的某一个分支，并合并
+git push <远程主机名> <分支名>  # 若远程分支和本地分支同名，可以省略一个
+git push  # 默认推送本地的master分支到origin的master分支上面，并合并
+```
+
+​	相关参数
+
++ --force：如果本地版本和远程版本有差异，但又要强行推送，可以加上--fore
+
++ --delete：删除分支
+
+  ``` shell
+  git push origin --delete test  # 删除origin主机的test分支
+  ```
+
+  

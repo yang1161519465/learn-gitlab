@@ -1060,4 +1060,47 @@ git push  # 默认推送本地的master分支到origin的master分支上面，�
   git push origin --delete test  # 删除origin主机的test分支
   ```
 
-  
+### 14. git branch
+
+​	git branch 命令用于在本地创建一个新的分支
+
+``` shell
+git branch [branch_name]  # 创建一个新的分支
+git branch -a  # 查看所有分支
+git branch   # 列出本地所有分支
+git branch -r  # 查看远程仓库分支列表
+git branch -d [branch_name]  # 删除指定分支
+git branch -m [old_name] [new_name]  # 给分支重命名
+```
+
+### 15 git checkout
+
+​	git checkout 命令用于切换分支，与操作文件
+
+``` shell
+git checkout [branch_name]  # 切换稻另一个分支
+git checkout [file_name]  # 放弃某一个文件的修改  只能放弃工作区的修改
+git checkout .  # 放弃当前目录下的修改
+git checkout -b [branch_name]  # 如果分支存在，就只切换分支，如果分支不存在，先创建分支， 然后在切换
+```
+
+### 16. git merge
+
+​	git merge 用于合并分支，如果自动合并失败，需要手动解决
+
+``` shell
+git merge [branch_name]  # 将分支合并到当前分支当中
+```
+
+### 17. git tag
+
+​	git tag 命令用于给某次提交打上一个标签，如果你达到一个重要的阶段，并希望永远记住那个特别的提交快照，你可以使用 git tag 给它打上标签。
+
+``` shell
+git tag -a [tag]  # 给当前提交打标签   然后会打开编辑器，让你出入标签注释
+git tag -a [tag] [commit_tag]  # 给指定提交添加标签
+```
+
+打了标签之后，查看日志，就可以查看到对应标签，如图，可以看到f9f01a9打上了v1.0标签
+
+![image-20210528221840820](README.assets/image-20210528221840820.png)

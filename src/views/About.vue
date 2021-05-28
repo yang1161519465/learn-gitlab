@@ -1,9 +1,10 @@
 <!--
- * @Author: 杨旭晨
- * @Date: 2021-05-27 22:21:20
- * @Descripttion: 
- * @LastEditors: 杨旭晨
- * @LastEditTime: 2021-05-28 09:34:39
+ * @Descripttion:
+ * @version:
+ * @Author: 雒小霞
+ * @Date: 2021-05-28 08:42:02
+ * @LastEditors: 雒小霞
+ * @LastEditTime: 2021-05-28 09:35:01
 -->
 <template>
   <div class="about">
@@ -24,3 +25,12 @@ export default {
   },
 };
 </script>
+<style lang="scss" scoped>
+div{
+  border: 1px solid #eee;
+  h1 {
+    text-align: center;
+    color: red;
+    display: inline;
+  }
+}

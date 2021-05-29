@@ -1082,6 +1082,9 @@ git checkout [branch_name]  # 切换稻另一个分支
 git checkout [file_name]  # 放弃某一个文件的修改  只能放弃工作区的修改
 git checkout .  # 放弃当前目录下的修改
 git checkout -b [branch_name]  # 如果分支存在，就只切换分支，如果分支不存在，先创建分支， 然后在切换
+git checkout [commit_id] [file_name]  # 从指定提交当中，签出指定文件   会覆盖工作区当中的文件
+git checkout [branch_name] [file_name]  # 从指定分支当中，签出指定文件   会覆盖工作区中的文件
+# file_name  可以使用通配符   *.css：目录下所有css文件    css/：签出某个目录下的文件
 ```
 
 ### 16. git merge

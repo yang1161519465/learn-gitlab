@@ -3,8 +3,8 @@
  * @version: 
  * @Author: 雒小霞
  * @Date: 2021-05-28 08:42:02
- * @LastEditors: 杨旭晨
- * @LastEditTime: 2021-05-28 09:33:05
+ * @LastEditors: 雒小霞
+ * @LastEditTime: 2021-05-29 09:22:38
 -->
 <template>
   <div class="home">
@@ -36,6 +36,9 @@
     <p>2021.5.28 -- lxx</p>
     <p>2021.5.28 -- lxx</p>
     <p>2021.5.28 -- lxx</p>
+    <!--  我又要修改Home文件了 -->
+    <p>2021.5.29 -- lxx</p>
+    <p>2021.5.29 -- lxx</p>
   </div>
 </template>
 

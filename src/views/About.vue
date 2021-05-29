@@ -4,7 +4,7 @@
  * @Author: 雒小霞
  * @Date: 2021-05-28 08:42:02
  * @LastEditors: 雒小霞
- * @LastEditTime: 2021-05-29 09:33:18
+ * @LastEditTime: 2021-05-29 09:33:45
 -->
 <template>
   <div class="about">
@@ -16,6 +16,10 @@
     <h1>This is an about page -lxx</h1>
     <h1>This is an about page -lxx</h1>
     <h1>This is an about page -lxx</h1>
+    <h1>This is an about page -yxc</h1>
+    <h1>This is an about page -yxc</h1>
+    <h1>This is an about page -yxc</h1>
+<h1>This is an about page -lxx   2021-5.29</h1>
     <h1>This is an about page -lxx   2021-5.29</h1>
     <a>2021-5-29-9:28  -lxx</a>
     <a>2021-5-29-9:28  -lxx</a>

@@ -3,8 +3,8 @@
  * @version:
  * @Author: 雒小霞
  * @Date: 2021-05-28 08:42:02
- * @LastEditors: 雒小霞
- * @LastEditTime: 2021-05-29 09:18:30
+ * @LastEditors: 杨旭晨
+ * @LastEditTime: 2021-05-29 09:28:52
 -->
 <template>
   <div class="about">
@@ -16,6 +16,9 @@
     <h1>This is an about page -lxx</h1>
     <h1>This is an about page -lxx</h1>
     <h1>This is an about page -lxx</h1>
+    <h1>This is an about page -yxc</h1>
+    <h1>This is an about page -yxc</h1>
+    <h1>This is an about page -yxc</h1>
 <h1>This is an about page -lxx   2021-5.29</h1>
   </div>
 </template>

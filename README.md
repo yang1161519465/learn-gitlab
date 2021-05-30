@@ -936,7 +936,7 @@ git commit -a # 将工作区所有修改提交到本地仓库
 
 ``` shell
 git reset HEAD^ # 撤销最近的一次提交，工作区内容保持不变
-git reset --head HEAD^ # 撤销最近一次的提交，工作区内容变为上一次提交内容
+git reset --hard HEAD^ # 撤销最近一次的提交，工作区内容变为上一次提交内容
 git reset --soft HEAD [版本号] # 回退到制定版本，工作区内容保持不变
 ```
 
@@ -1071,7 +1071,7 @@ git branch -m [old_name] [new_name]  # 给分支重命名
 ​	git checkout 命令用于切换分支，与操作文件
 
 ``` shell
-git checkout [branch_name]  # 切换稻另一个分支
+git checkout [branch_name]  # 切换到另一个分支
 git checkout [file_name]  # 放弃某一个文件的修改  只能放弃工作区的修改
 git checkout .  # 放弃当前目录下的修改
 git checkout -b [branch_name]  # 如果分支存在，就只切换分支，如果分支不存在，先创建分支， 然后在切换
@@ -1094,9 +1094,10 @@ git merge [branch_name]  # 将分支合并到当前分支当中
 
 ``` shell
 git tag -a [tag]  # 给当前提交打标签   然后会打开编辑器，让你出入标签注释
-git tag -a [tag] [commit_tag]  # 给指定提交添加标签
+git tag -a [tag] [commit_id]  # 给指定提交添加标签
 ```
 
 打了标签之后，查看日志，就可以查看到对应标签，如图，可以看到f9f01a9打上了v1.0标签
 
 ![image-20210528221840820](README.assets/image-20210528221840820.png)
+

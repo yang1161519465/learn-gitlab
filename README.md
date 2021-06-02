@@ -528,6 +528,36 @@ GitLab添加账号有两种方式，管理员添加与注册
 
    添加成功之后，会显示你的SSH Keys
 
+> 使用TortoiseGit作为github本地管理工具，TortoiseGit使用扩展名为ppk的秘钥，而不是 ssh-keygen生成的rsa密钥。也就是说在git bash中使用ssh-keygen -C "username@email.com" -t rsa产生的密钥TortoiseGit中不能用。而基于github的开发必须要用到rsa密钥，因此需要用到TortoiseGit的putty key generator工具来生成既适用于github的rsa密钥也适用于TortoiseGit的ppk密钥
+
+1. 在开始菜单中，找到TortoiseGit下的工具PuTTYgen
+
+   ![image-20210602153056034](README.assets/image-20210602153056034.png)
+
+2. 选择下方的生成类型中的RSA，然后点击Generate生成即可（生成过程中可以多晃晃鼠标增加随机性）
+
+   ![image-20210602153224712](README.assets/image-20210602153224712.png)
+
+3. 进度条结束之后，会生成如下图所示的界面，分别点击下方的Save public key和Save private key，保存公钥和私钥，建议保存到C:\User\用户名\\.ssh目录下，命名随意，
+
+   > 公钥是不需要后缀名的，按照文本文件处理即可，私钥后缀名为ppk，不可改变
+
+   ![image-20210602153416408](README.assets/image-20210602153416408.png)
+
+4. 重复上面的步骤3，将公钥中的文本内容添加到gitlab或者github当中，title随意。
+
+   ![image-20210602153921479](README.assets/image-20210602153921479.png)
+
+5. 在TortoiseGit中添加putty key
+
+   ![image-20210602155456584](README.assets/image-20210602155456584.png)
+
+   在已经在git管理的目录下，打开TortoiseGit设置
+
+6. 在远端选项卡中，点击对应的远端名称，在Putty秘钥处，选择刚刚保存的putty私钥，点击保存即可，这样，就可以开心快乐的使用TortoiseGit进行git操作了。
+
+   ![image-20210602155559898](README.assets/image-20210602155559898.png)
+
 ### 5. 用户组
 
 为了方便用户管理，GitLab提供了用户组的概念，创建组，将同样权限职能的用户添加到同一个组当中，给组来添加相对应的权限与项目，就不必要每次给项目添加用户的时候，选择每一个开发者，直接添加一个组。

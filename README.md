@@ -932,7 +932,39 @@ GitLab添加账号有两种方式，管理员添加与注册
    doc/*.txt    #会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
    ```
 
+### 16. 重置gitlab的root密码
 
+首先，需要在服务器中进入，保证gitlab处于启动状态，&保证redis处于启动状态
+
+1. gitlab-rails console production 进入gitlab串口环境下  
+
+   > 个人实际操作的时候，gitlab-rails console production 进不去，于是我使用命令gitlab-rails console进入了串口环境下
+
+2. 查询root用户，一般来说，是gitlab用户数据库当中的第一个用户
+
+   ``` shell
+   user = User.where(id: 1).first
+   ```
+
+3. 重置管理员密码为12345678   （重置之后的密码，随便定）
+
+   ``` shell
+   user.password=12345678
+   ```
+
+4. 确认管理员密码为12345678   （确认的密码要和上一步重置的密码一样）
+
+   ``` shell
+   user.password_confirmation=12345678
+   ```
+
+5. 保存用户修改
+
+   ``` shell
+   user.save!
+   ```
+
+6. 刷新gitlab登陆界面，使用重置之后的密码登陆
 
 ## 四、git相关命令
 

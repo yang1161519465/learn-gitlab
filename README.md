@@ -1200,3 +1200,26 @@ git tag -a [tag] [commit_id]  # 给指定提交添加标签
 
 ![image-20210528221840820](README.assets/image-20210528221840820.png)
 
+### 18. git show
+
+git show 用于查看某一次提交的详情，
+
+``` shell
+git show [commit_id]
+```
+
+### 19. git cherry-pick
+
+git cherry-pick 用于将某一个分值上面的一个commit合并到另一个分支，
+
+> 比如，我在dev分支上面首先做出了一个提交a，又做了第二个提交b，但是我只想将提交b合并到主分支上面，这个时候，我就可以使用git cherry-pick命令来合并
+>
+> ``` shell
+> git checkout master  # 切换到主分支
+> git cherry-pick 533c020  # 将提交533c020合并到当前分支，（假设提交b的版本号是533c020）
+> ```
+
+``` shell
+git cherry-pick [版本号]  # 将对应版本号的提交，合并到当前分支
+```
+

@@ -1223,3 +1223,12 @@ git cherry-pick 用于将某一个分值上面的一个commit合并到另一个�
 git cherry-pick [版本号]  # 将对应版本号的提交，合并到当前分支
 ```
 
+### 19. git restore
+
+git restore命令是撤销的意思，也就是把文件从缓存区撤销，回到未被追踪的状态。
+
+``` shell
+git restore [file_name]  # 撤销暂存区中文件的修改
+```
+
+> 对工作区的文件不起作用

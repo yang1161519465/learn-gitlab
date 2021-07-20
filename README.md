@@ -528,6 +528,36 @@ GitLab添加账号有两种方式，管理员添加与注册
 
    添加成功之后，会显示你的SSH Keys
 
+> 使用TortoiseGit作为github本地管理工具，TortoiseGit使用扩展名为ppk的秘钥，而不是 ssh-keygen生成的rsa密钥。也就是说在git bash中使用ssh-keygen -C "username@email.com" -t rsa产生的密钥TortoiseGit中不能用。而基于github的开发必须要用到rsa密钥，因此需要用到TortoiseGit的putty key generator工具来生成既适用于github的rsa密钥也适用于TortoiseGit的ppk密钥
+
+1. 在开始菜单中，找到TortoiseGit下的工具PuTTYgen
+
+   ![image-20210602153056034](README.assets/image-20210602153056034.png)
+
+2. 选择下方的生成类型中的RSA，然后点击Generate生成即可（生成过程中可以多晃晃鼠标增加随机性）
+
+   ![image-20210602153224712](README.assets/image-20210602153224712.png)
+
+3. 进度条结束之后，会生成如下图所示的界面，分别点击下方的Save public key和Save private key，保存公钥和私钥，建议保存到C:\User\用户名\\.ssh目录下，命名随意，
+
+   > 公钥是不需要后缀名的，按照文本文件处理即可，私钥后缀名为ppk，不可改变
+
+   ![image-20210602153416408](README.assets/image-20210602153416408.png)
+
+4. 重复上面的步骤3，将公钥中的文本内容添加到gitlab或者github当中，title随意。
+
+   ![image-20210602153921479](README.assets/image-20210602153921479.png)
+
+5. 在TortoiseGit中添加putty key
+
+   ![image-20210602155456584](README.assets/image-20210602155456584.png)
+
+   在已经在git管理的目录下，打开TortoiseGit设置
+
+6. 在远端选项卡中，点击对应的远端名称，在Putty秘钥处，选择刚刚保存的putty私钥，点击保存即可，这样，就可以开心快乐的使用TortoiseGit进行git操作了。
+
+   ![image-20210602155559898](README.assets/image-20210602155559898.png)
+
 ### 5. 用户组
 
 为了方便用户管理，GitLab提供了用户组的概念，创建组，将同样权限职能的用户添加到同一个组当中，给组来添加相对应的权限与项目，就不必要每次给项目添加用户的时候，选择每一个开发者，直接添加一个组。
@@ -879,7 +909,7 @@ GitLab添加账号有两种方式，管理员添加与注册
 
 ### 15. 忽略文件
 
-多时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件等
+很多时候我们不想把某些文件纳入版本控制中，比如数据库文件，临时文件，设计文件，依赖文件等
 
 在根目录下建立".gitignore"文件，此文件有如下规则：
 
@@ -902,7 +932,39 @@ GitLab添加账号有两种方式，管理员添加与注册
    doc/*.txt    #会忽略 doc/notes.txt 但不包括 doc/server/arch.txt
    ```
 
+### 16. 重置gitlab的root密码
 
+首先，需要在服务器中进入，保证gitlab处于启动状态，&保证redis处于启动状态
+
+1. gitlab-rails console production 进入gitlab串口环境下  
+
+   > 个人实际操作的时候，gitlab-rails console production 进不去，于是我使用命令gitlab-rails console进入了串口环境下
+
+2. 查询root用户，一般来说，是gitlab用户数据库当中的第一个用户
+
+   ``` shell
+   user = User.where(id: 1).first
+   ```
+
+3. 重置管理员密码为12345678   （重置之后的密码，随便定）
+
+   ``` shell
+   user.password=12345678
+   ```
+
+4. 确认管理员密码为12345678   （确认的密码要和上一步重置的密码一样）
+
+   ``` shell
+   user.password_confirmation=12345678
+   ```
+
+5. 保存用户修改
+
+   ``` shell
+   user.save!
+   ```
+
+6. 刷新gitlab登陆界面，使用重置之后的密码登陆
 
 ## 四、git相关命令
 
@@ -1139,8 +1201,41 @@ git tag -a [tag] [commit_id]  # 给指定提交添加标签
 ![image-20210528221840820](README.assets/image-20210528221840820.png)
 
 
+### 18. git show
 
-### 18. git count
+git show 用于查看某一次提交的详情，
+
+``` shell
+git show [commit_id]
+```
+
+### 19. git cherry-pick
+
+git cherry-pick 用于将某一个分值上面的一个commit合并到另一个分支，
+
+> 比如，我在dev分支上面首先做出了一个提交a，又做了第二个提交b，但是我只想将提交b合并到主分支上面，这个时候，我就可以使用git cherry-pick命令来合并
+>
+> ``` shell
+> git checkout master  # 切换到主分支
+> git cherry-pick 533c020  # 将提交533c020合并到当前分支，（假设提交b的版本号是533c020）
+> ```
+
+``` shell
+git cherry-pick [版本号]  # 将对应版本号的提交，合并到当前分支
+```
+
+### 20. git restore
+
+git restore命令是撤销的意思，也就是把文件从缓存区撤销，回到未被追踪的状态。
+
+``` shell
+git restore [file_name]  # 撤销暂存区中文件的修改
+```
+
+> 对工作区的文件不起作用
+
+
+### 21. git count
 
 ```
 git count-objects -v 松散物体的数量,松散对象消耗的磁盘空间，以 KiB 为单位
@@ -1152,9 +1247,9 @@ git count-objects -v 松散物体的数量,松散对象消耗的磁盘空间，�
 
 
 
-# 五. 常见问题
+## 五. 常见问题
 
-## .git\object文件过大
+### .git\object文件过大
 
 由于git上传过大的文件，例如图片，视频，缓存文件等造成.git缓存过大，clone和push都费时间。
 
@@ -1240,7 +1335,7 @@ du -sh .git
 
 
 
-## **看不到远端分支**
+### **看不到远端分支**
 
 git 在远程仓库创建的分支在本地分支看不到，或者删除.git文件后分支变为默认的master(远端分支被重命名过)，可用以下指令恢复分支
 
@@ -1263,7 +1358,7 @@ git push -f origin master
 
 
 
-## GitHub上传慢
+### GitHub上传慢
 
 当配置DNS效果不理想时，可以将电脑wifi切换至手机热点，屡试屡爽。
 
@@ -1271,7 +1366,7 @@ git push -f origin master
 
 
 
-## Github下载慢
+### Github下载慢
 
 1. 拿到GitHub项目地址
 

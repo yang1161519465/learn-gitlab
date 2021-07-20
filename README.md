@@ -1200,6 +1200,7 @@ git tag -a [tag] [commit_id]  # 给指定提交添加标签
 
 ![image-20210528221840820](README.assets/image-20210528221840820.png)
 
+
 ### 18. git show
 
 git show 用于查看某一次提交的详情，
@@ -1223,7 +1224,7 @@ git cherry-pick 用于将某一个分值上面的一个commit合并到另一个�
 git cherry-pick [版本号]  # 将对应版本号的提交，合并到当前分支
 ```
 
-### 19. git restore
+### 20. git restore
 
 git restore命令是撤销的意思，也就是把文件从缓存区撤销，回到未被追踪的状态。
 
@@ -1232,3 +1233,148 @@ git restore [file_name]  # 撤销暂存区中文件的修改
 ```
 
 > 对工作区的文件不起作用
+
+
+### 21. git count
+
+```
+git count-objects -v 松散物体的数量,松散对象消耗的磁盘空间，以 KiB 为单位
+
+查看文件大小
+-v  更详细的报告：
+-H  可读格式打印尺寸
+```
+
+
+
+## 五. 常见问题
+
+### .git\object文件过大
+
+由于git上传过大的文件，例如图片，视频，缓存文件等造成.git缓存过大，clone和push都费时间。
+
+**1、暴力清除.git法**
+
+全程不能使用git fetch，否则失败
+
+如果历史commit记录很重要的，不要采用此方法！！
+
+推荐用git branch-filter检查大文件，对应删除大文件即可。
+
+
+
+开始删除重建，注意备份
+
+```
+rm -rf .git/
+git init
+git add -A
+git commit -m "add all again"
+git remote add origin 网址
+git push -f -u origin master
+```
+
+再次查看.git文件大小
+
+遇到报错：fatal: This operation must be run in a work tree
+
+```
+git config --unset core.bare
+```
+
+遇到报错：You are not allowed to force push code to a protected branch on this project.
+
+```
+git->settings->repository->protected tags修改为unprotect即可
+```
+
+**2、手动筛选法**
+
+1. 查找大文件
+
+```
+git rev-list --objects --all | grep "$(git verify-pack -v .git/objects/pack/*.idx | sort -k 3 -n | tail -5 | awk '{print$1}')"
+```
+
+2. 删除指定的大文件,例如"youle0131.zip"
+
+```
+git filter-branch --force --index-filter "git rm --cached --ignore-unmatch 'youle0203.zip'" --prune-empty --tag-name-filter cat -- --all
+```
+
+```
+git for-each-ref --format='delete %(refname)' refs/original | git update-ref --stdin
+```
+
+3. 重新标记过期的缓存文件
+
+```
+git reflog expire --expire=now --all
+```
+
+4. 回收过期的缓存
+
+```
+git gc --prune=now
+```
+
+5. 重新用命令统计下，看下大小
+
+```
+git count-objects -v
+```
+
+6. 重新提交
+
+```
+git push --all --force origin
+du -sh .git
+```
+
+重复几次上面的命令一直找到前几个大文件，进行删除操作. 就可以把大小降下来。
+
+
+
+### **看不到远端分支**
+
+git 在远程仓库创建的分支在本地分支看不到，或者删除.git文件后分支变为默认的master(远端分支被重命名过)，可用以下指令恢复分支
+
+```
+git fetch 拉取远程分支，(更新分支操作)
+git branch -r 查看分支
+```
+
+或者
+
+```
+git remote add origin 网址
+```
+
+强制上传
+
+ ```
+git push -f origin master 
+ ```
+
+
+
+### GitHub上传慢
+
+当配置DNS效果不理想时，可以将电脑wifi切换至手机热点，屡试屡爽。
+
+有代理的可以改代理+proxychains。git上配置http.proxy 或者https.proxy, 速度基本在1M以上
+
+
+
+### Github下载慢
+
+1. 拿到GitHub项目地址
+
+2. 登录码云，在下拉菜单末尾，选择导入来自Github的仓库
+
+3. 拿到clone码云转换后的地址，满速拉取码云成功。
+
+4. 将远端关联回Github。
+
+   git remote set url  或在.git/config 将gitee改为github也可。
+

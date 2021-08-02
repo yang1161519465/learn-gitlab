@@ -1210,7 +1210,7 @@ git show [commit_id]
 
 ### 19. git cherry-pick
 
-git cherry-pick 用于将某一个分值上面的一个commit合并到另一个分支，
+git cherry-pick 用于将某一个分支上面的一个commit合并到另一个分支，
 
 > 比如，我在dev分支上面首先做出了一个提交a，又做了第二个提交b，但是我只想将提交b合并到主分支上面，这个时候，我就可以使用git cherry-pick命令来合并
 >
@@ -1223,7 +1223,7 @@ git cherry-pick 用于将某一个分值上面的一个commit合并到另一个�
 git cherry-pick [版本号]  # 将对应版本号的提交，合并到当前分支
 ```
 
-### 19. git restore
+### 20. git restore
 
 git restore命令是撤销的意思，也就是把文件从缓存区撤销，回到未被追踪的状态。
 

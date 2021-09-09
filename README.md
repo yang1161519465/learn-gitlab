@@ -1234,7 +1234,6 @@ git restore [file_name]  # 撤销暂存区中文件的修改
 
 > 对工作区的文件不起作用
 >
-> 测试测试
 
 
 ### 21. git count

@@ -956,6 +956,10 @@ GitLab添加账号有两种方式，管理员添加与注册
 
 ​    git init 命令用于在目录中创建新的Git仓库
 
+```shell
+git init --bare a.git   # 创建一个远程的git仓库，可以使用ssh协议来访问
+```
+
 ### 2. git clone
 
 ​    git clone 用于将一个远程的Git仓库拷贝到本地
